@@ -47,7 +47,7 @@ public static void main(String[] args) throws Exception
         writeLines(tutorials, count);
 
     } // end main()        
-/*************************************************/
+/**************************************************************************************************************/
     
     /* This method reads data from the file into the array. 
      * We want our array to work with up to 100 elements  
@@ -83,7 +83,7 @@ public static void main(String[] args) throws Exception
         return count;    // returns the number of items used in the array.
     
     } // end readList()
-/*************************************************/
+/*************************************************************************************************************/
     
     /* This method sorts an array of Strings line by line 
      * using a simple bubble sort. 
@@ -126,7 +126,7 @@ public static void main(String[] args) throws Exception
         } while (swapped);	
         
     } // end sortStringArray
-/******************************************************************/
+/***********************************************************************************************************/
 
         /*This method prints an array of Strings on the screen.  
          * The first parameter refers to the array in the main method.  The second 
@@ -141,7 +141,7 @@ public static void main(String[] args) throws Exception
                 System.out.println(lines[i]);
         
         } // end displayLines()
-/*************************************************/
+/**********************************************************************************************************/
 
 /* This method writes an array of Strings to a text data file.  
  * The first parameter refers to the array in the main method. The second parameter
@@ -166,10 +166,50 @@ public static void main(String[] args) throws Exception
         } // end writeTextArray()
 /*************************************************************************************************************/
 
-        public int[]insertionSort(int[] list){
+        public static void insertionSort(String[] a, int count){
 
-        }//end insertionSort
+            int i, j; /* Creating variables to iterate through my loops,
+             to keep track of my key value */
+            String key;
 
 
+            for(i=1; i<count-1; i++){
+                key = a[i];
+                j = i-1;
 
-} // end class        
+                while (j>=0 && a[j].compareTo(key) >0) {
+                    a[j + 1] = a[j];
+                    i = j - 1;
+                }
+                a[j + 1] = key;
+
+                }// end for()
+
+            }//end insertionSort()
+
+
+/*************************************************************************************************************/
+
+
+        public static void selectionSort(String[] a, int count){
+            String temp; // temp variable for swapping the array
+            int i,j,minimumIndex;
+
+            for (i=0; i<count -1; i++){
+                minimumIndex = i;
+                for(j=i+1; j<count; j++){
+                    if(a[j].compareTo(a[minimumIndex])<0){
+                        minimumIndex = j;
+                    }
+                }
+                temp =a[minimumIndex];
+                a[minimumIndex] = a[i];
+                a[i] = temp;
+
+            }// end for()
+
+        }// end selectionSort()
+
+}// end Tutorials
+
+
