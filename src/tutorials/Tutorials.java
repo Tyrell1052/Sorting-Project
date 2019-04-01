@@ -1,19 +1,28 @@
     
-/*  CSCI 111 - Fall 2013
+/* CSCI 112 - Fall 2013
  * reading, sorting and writing data in text files
- * this program reads data from a text file, sorst the data,
- * then writes the data bacxk to another text file.
+ * this program reads data from a text file, sort the data,
+ * then writes the data back to another text file.
  * last edited Oct 1, 2013 by C. Herbert
  * 
  * for this to work, the file "unsorted.txt" must be in the project folder
  * warning -- this will overwrite the file "tutorials.txt"
  * 
- * Thos program has methods to read lines from a text from a file into an array, 
+ * This program has methods to read lines from a text from a file into an array,
  * display a text array on screen line-by-line, sort a text array, and write 
  * a text array to a data file line by line.
  * 
- * The program is limited to a file with 100 lines.   To change this, change the 
- * size of the array declared in the main mwthod.
+ * The program is limited to a file with 100 lines. To change this, change the
+ * size of the array declared in the main method.
+ *
+ * Tyrell Robbins:      CSCI 112     10-26-19
+ *
+ * Added two methods
+ *
+ * selectionSort() this method implements the Selection Sort algorithm able to sort data in a .txt file
+ *
+ *
+ * insertionSort() this method implements the Insertions Sort algorithm able to sort data in a .txt file
  * 
  */
 package tutorials;
@@ -37,7 +46,13 @@ public static void main(String[] args) throws Exception
         displayLines(tutorials, count);
         
         //to sort the array 
-        sortStringArray(tutorials, count);
+        //sortStringArray(tutorials, count);
+
+        //insertion sort
+        insertionSort(tutorials, count);
+
+        // selection sort
+        //selectionSort(tutorials, count);
 
         // print the array on the screen  line by line
         System.out.println("\nThe sorted array:\n");
@@ -88,8 +103,8 @@ public static void main(String[] args) throws Exception
     /* This method sorts an array of Strings line by line 
      * using a simple bubble sort. 
      * 
-     * The first parameter refers to the array in the main method.  
-     * The second parameter is the number of elements in the array that 
+     * The first parameter refers to the array in the main method.
+     * The second parameter is the number of elements in the array that
      * actually contain data
      */
     
@@ -166,20 +181,28 @@ public static void main(String[] args) throws Exception
         } // end writeTextArray()
 /*************************************************************************************************************/
 
+/*
+ * This method sorts an array of Strings line by line
+ * using a Insertion Sort algorithm able to sort String data
+ *
+ * The second parameter is the number of elements in the array that
+ *
+ */
+
         public static void insertionSort(String[] a, int count){
 
-            int i, j; /* Creating variables to iterate through my loops,
-             to keep track of my key value */
-            String key;
+            int i, j; /* Creating variables to iterate through my loops*/
+            String key;// this key variable will keep track of the index of the array
 
 
-            for(i=1; i<count-1; i++){
+            for(i=1; i<count; i++){
                 key = a[i];
                 j = i-1;
 
-                while (j>=0 && a[j].compareTo(key) >0) {
+                //here i am using the compareTo method to aid in the comparision of each string
+                while (j >= 0 && a[j].compareTo(key) > 0) {
                     a[j + 1] = a[j];
-                    i = j - 1;
+                    j = j - 1;
                 }
                 a[j + 1] = key;
 
@@ -191,9 +214,17 @@ public static void main(String[] args) throws Exception
 /*************************************************************************************************************/
 
 
+/*
+ * This method sorts an array of Strings line by line
+ * using a Selection Sort algorithm able to sort String data
+ *
+ * The second parameter is the number of elements in the array that
+ *
+ */
+
         public static void selectionSort(String[] a, int count){
             String temp; // temp variable for swapping the array
-            int i,j,minimumIndex;
+            int i,j,minimumIndex; //variables needed to aid in the sorting process
 
             for (i=0; i<count -1; i++){
                 minimumIndex = i;
@@ -208,8 +239,7 @@ public static void main(String[] args) throws Exception
 
             }// end for()
 
+
         }// end selectionSort()
 
 }// end Tutorials
-
-
